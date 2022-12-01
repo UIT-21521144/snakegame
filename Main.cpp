@@ -4,6 +4,15 @@
 
 using namespace std;
 
+void ShowConsoleCursor(bool showFlag)// an con tro chuot
+{
+	HANDLE out =GetStdHandle(STD_OUTPUT_HANDLE);
+	CONSOLE_CURSOR_INFO cursorInfo;
+	GetConsoleCursorInfo(out, &cursorInfo);
+	cursorInfo.bVisible = showFlag;
+	SetConsoleCursorInfo(out, &cursorInfo);
+}
+
 void SetWindowSize(SHORT width, SHORT height)
 {
     HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -86,6 +95,7 @@ void ve_tuong(){
 }
 
 int main(){
+	ShowConsoleCursor(false);
 	SetWindowSize(200,100);
 	SetScreenBufferSize(200,100);
 	DisableResizeWindow();
