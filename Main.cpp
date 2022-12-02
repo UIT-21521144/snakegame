@@ -4,6 +4,10 @@
 
 using namespace std;
 
+
+int dieuKien(int x, int y);
+void reset(int &x);
+
 void ShowConsoleCursor(bool showFlag)// an con tro chuot
 {
 	HANDLE out =GetStdHandle(STD_OUTPUT_HANDLE);
@@ -93,6 +97,30 @@ void ve_tuong(){
 	f = 201;
 	gotoXY(5,2) ; cout << f;
 }
+
+int dieuKien(int x, int y,int ToaDox[],int ToaDoy[]){
+	if ( x == 5 ){
+		return 1;
+	}else if ( x == 105 ){
+		return 2;
+	}
+	else if (  y == 2 ){
+		return 3;
+	}else if (  y == 26){
+		return 4;
+	}
+	for(int i = 1; i < sl; i++){
+		if(ToaDox[0] == ToaDox[i] && ToaDoy[0] == ToaDoy[i] ) return 0;
+	}
+	return 5;
+}
+
+
+void reset(int &x )
+{
+	x = 3;
+}
+
 
 int main(){
 	ShowConsoleCursor(false);
