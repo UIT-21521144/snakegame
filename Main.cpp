@@ -94,6 +94,33 @@ void ve_tuong(){
 	gotoXY(5,2) ; cout << f;
 }
 
+void Name(){
+	char a, b, c, d ,e, f;
+	b = 205;
+	for(int i =51; i < 64; i++){
+		gotoXY(i, 11);
+		cout <<  b;
+		gotoXY(i, 15);
+		cout << b;
+	}
+	a = 186;
+	for(int i =12; i < 15; i++){
+		gotoXY(50, i);
+		cout <<  a;
+		gotoXY(64, i);
+		cout << a;
+	}
+	c = 200;
+	gotoXY(50, 15); cout << c;
+	d = 187;
+	gotoXY(64, 11); cout << d;
+	e = 188;
+	gotoXY(64,15); cout << e;
+	f = 201;
+	gotoXY(50,11) ; cout << f;
+	gotoXY(56,12); cout << "NAME";
+}
+
 int MenuXin() {
 	char a, b, c, d, e, f;
 	b = 205;
@@ -158,6 +185,22 @@ void veRan(int x[], int y[]) {
 		}
 	}
 }
+int dieuKien(int x, int y,int ToaDox[],int ToaDoy[]){
+	if ( x == 5 ){
+		return 1;
+	}else if ( x == 105 ){
+		return 2;
+	}
+	else if (  y == 2 ){
+		return 3;
+	}else if (  y == 26){
+		return 4;
+	}
+	for(int i = 1; i < sl; i++){
+		if(ToaDox[0] == ToaDox[i] && ToaDoy[0] == ToaDoy[i] ) return 0;
+	}
+	return 5;
+}
 void Diem(int *diem){
 	gotoXY(105,29); cout << "SCORE : " << *diem;
 }
@@ -187,6 +230,13 @@ void Moi(int ToaDox[], int ToaDoy[], int *n, int *m){
 	gotoXY(x,y);
 	cout << "*";
 }
+
+
+void reset(int &x )
+{
+	x = 3;
+}
+
 int main(){
 	ShowConsoleCursor(false);
 	SetWindowSize(200,100);
