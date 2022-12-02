@@ -262,6 +262,52 @@ void gameover(int x[],int y[]){
 	gotoXY(71,24); cout << "* *   * *";
 	gotoXY(71,25); cout << "* *     * *";
 }
+int endMenu(){
+	system("cls");
+	char a, b, c, d ,e, f;
+	b = 205;
+	for(int i =46; i < 70; i++){
+		gotoXY(i, 9);
+		cout <<  b;
+		gotoXY(i, 20);
+		cout << b;
+	}
+	a = 186;
+	for(int i =10; i < 20; i++){
+		gotoXY(45, i);
+		cout <<  a;
+		gotoXY(70, i);
+		cout << a;
+	}
+	c = 200;
+	gotoXY(45, 20); cout << c;
+	d = 187;
+	gotoXY(70, 9); cout << d;
+	e = 188;
+	gotoXY(70,20); cout << e;
+	f = 201;
+	gotoXY(45,9) ; cout << f;
+	gotoXY(53,10); cout << "GAME OVER";
+	gotoXY(46, 12); cout << "1. EXIT";
+	gotoXY(46, 13); cout << "2. REPLAY";
+	int x;
+	gotoXY(46, 14);cout << "Your Choice: ";
+	gotoXY(60,14); cin >> x;
+	if( x == 1 ){
+		return 1;
+	} 
+	else if(x == 2) {
+		reset(sl);
+		return 2;
+	}
+	else {
+		gotoXY(46,15) ;cout << "Chon sai.";
+		Sleep(2000);
+		gotoXY(46,15) ;cout << "         ";
+		endMenu();
+	}
+	
+}
 
 void veRan(int x[], int y[]) {
 	char a = 002;
