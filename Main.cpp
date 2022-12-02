@@ -4,7 +4,7 @@
 
 using namespace std;
 
-
+void Name();
 int dieuKien(int x, int y);
 void reset(int &x);
 
@@ -96,6 +96,33 @@ void ve_tuong(){
 	gotoXY(105,26); cout << e;
 	f = 201;
 	gotoXY(5,2) ; cout << f;
+}
+
+void Name(){
+	char a, b, c, d ,e, f;
+	b = 205;
+	for(int i =51; i < 64; i++){
+		gotoXY(i, 11);
+		cout <<  b;
+		gotoXY(i, 15);
+		cout << b;
+	}
+	a = 186;
+	for(int i =12; i < 15; i++){
+		gotoXY(50, i);
+		cout <<  a;
+		gotoXY(64, i);
+		cout << a;
+	}
+	c = 200;
+	gotoXY(50, 15); cout << c;
+	d = 187;
+	gotoXY(64, 11); cout << d;
+	e = 188;
+	gotoXY(64,15); cout << e;
+	f = 201;
+	gotoXY(50,11) ; cout << f;
+	gotoXY(56,12); cout << "NAME";
 }
 
 int dieuKien(int x, int y,int ToaDox[],int ToaDoy[]){
