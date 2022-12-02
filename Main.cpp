@@ -158,93 +158,50 @@ void veRan(int x[], int y[]) {
 		}
 	}
 }
-void gameover(int x[],int y[]){
-	char kitu = 5;
-	gotoXY(x[0], y[0]); cout << kitu;
-	for(int i = 1; i <sl; i++){
-		gotoXY(x[i],y[i]); cout << " ";
+int MenuStart(){
+	char a, b, c, d ,e, f;
+	b = 205;
+	for(int i =41; i < 60; i++){
+		gotoXY(i, 10);
+		cout <<  b;
+		gotoXY(i, 20);
+		cout << b;
 	}
-	gotoXY(45, 11);system("Color 4");
-	gotoXY(21, 8) ; cout << " * * *";
-	gotoXY(9, 7) ; cout << "* * * * * * * * *";
-	gotoXY(9, 6) ; cout << " * * * * * * * * ";
-	gotoXY(9, 5); cout << "  * * * * * * *";
-	gotoXY(8, 8); cout << "* * *"; 
-	gotoXY(7, 9); cout << "* * *"; 
-	gotoXY(7, 10); cout << "* * *"; 
-	gotoXY(8, 11); cout << "* * *"; 
-	gotoXY(9, 12); cout << "* * *"; 
-	gotoXY(10, 13) ; cout << "* * * * * * * * *";
-	gotoXY(10, 14) ; cout << " * * * * * * * * ";
-	gotoXY(10, 15); cout << "  * * * * * * *";
-	gotoXY(19, 10) ; cout << "* * * * * *";
-	gotoXY(19, 11) ; cout << "* * * * * *";
-	gotoXY(22, 12) ; cout << "* * *";
-	gotoXY(38, 5) ; cout << "* * *";
-	gotoXY(37, 6) ; cout << "* * * *";
-	gotoXY(36, 7) ; cout << "* * * * *";
-	gotoXY(35, 8) ; cout << "* * * * * *";
-	gotoXY(34, 9) ; cout << "* * *   * * *";
-	gotoXY(33, 10) ; cout << "* * *     * * *";
-	gotoXY(32, 11) ; cout << "* * * * * * * * *";
-	gotoXY(31, 12) ; cout << "* * * * * * * * * *";
-	gotoXY(30, 13) ; cout << "* * *           * * *";
-	gotoXY(29, 14) ; cout << "* * *             * * *";
-	gotoXY(28, 15) ; cout << "* * *               * * *";
-	gotoXY(54, 5) ; cout << "* * *                 * * *";
-	gotoXY(54, 6) ; cout << "* * * *             * * * *";
-	gotoXY(54, 7) ; cout << "* * * * *         * * * * * ";
-	gotoXY(54, 8) ; cout << "* * * * * *     * * * * * *";
-	gotoXY(54, 9) ; cout << "* * *   * * * * *     * * *";
-	gotoXY(54, 10) ; cout <<"* * *    * * * *      * * *";
-	gotoXY(54, 11) ; cout <<"* * *     * * *       * * *";
-	gotoXY(54, 12) ; cout <<"* * *                 * * *";
-	gotoXY(54, 13) ; cout <<"* * *                 * * *";
-	gotoXY(54, 14) ; cout <<"* * *                 * * *";
-	gotoXY(54, 15) ; cout <<"* * *                 * * *";
-	gotoXY(83, 5) ; cout <<"* * * * * * *";
-	gotoXY(83, 6) ; cout <<"* * * * * * *";
-	gotoXY(83, 7) ; cout <<"* * *";
-	gotoXY(83, 8) ; cout <<"* * *";
-	gotoXY(83, 9) ; cout <<"* * * * * * *";
-	gotoXY(83, 10) ; cout <<"* * * * * * *";
-	gotoXY(83, 11) ; cout <<"* * * * * * *";
-	gotoXY(83, 12) ; cout <<"* * *";
-	gotoXY(83, 13) ; cout <<"* * *";
-	gotoXY(83, 14) ; cout <<"* * * * * * *";
-	gotoXY(83, 15) ; cout <<"* * * * * * *";
-	gotoXY(30,18); cout << "* * * * ";
-	gotoXY(29,19);cout <<  "* * * * * ";
-	gotoXY(28,20);cout << "* *     * *";
-	gotoXY(27,21); cout<<"* *       * *";
-	gotoXY(27,22); cout<<"* *       * *";
-	gotoXY(28,23);cout << "* *     * *";
-	gotoXY(29,24);cout <<  "* * * * * ";
-	gotoXY(30,25); cout << "* * * *";
-	gotoXY(40,18); cout << "* *             * *";
-	gotoXY(41,19); cout << "* *           * *";
-	gotoXY(42,20); cout << "* *         * *";
-	gotoXY(43,21); cout << "* *       * *";
-	gotoXY(44,22); cout << "* *     * *";
-	gotoXY(45,23); cout << "* *   * *";
-	gotoXY(46,24); cout << "* * * *";
-	gotoXY(47,25); cout << "* * *";
-	gotoXY(60,18); cout << "* * * * *";
-	gotoXY(60,19); cout << "* * * * *";
-	gotoXY(60,20); cout << "* *";
-	gotoXY(60,21); cout << "* * * * *";
-	gotoXY(60,22); cout << "* * * * *";
-	gotoXY(60,23); cout << "* *";
-	gotoXY(60,24); cout << "* * * * *";
-	gotoXY(60,25); cout << "* * * * *";
-	gotoXY(71,18); cout << "* * * *";
-	gotoXY(71,19); cout << "* * * * *";
-	gotoXY(71,20); cout << "* *   * *";
-	gotoXY(71,21); cout << "* * * * *";
-	gotoXY(71,22); cout << "* * *";
-	gotoXY(71,23); cout << "* * * *";
-	gotoXY(71,24); cout << "* *   * *";
-	gotoXY(71,25); cout << "* *     * *";
+	a = 186;
+	for(int i =11; i < 20; i++){
+		gotoXY(40, i);
+		cout <<  a;
+		gotoXY(60, i);
+		cout << a;
+	}
+	c = 200;
+	gotoXY(40, 20); cout << c;
+	d = 187;
+	gotoXY(60, 10); cout << d;
+	e = 188;
+	gotoXY(60,20); cout << e;
+	f = 201;
+	gotoXY(40,10) ; cout << f;
+	gotoXY(46, 11);system("Color 2");
+	cout << "MENU";
+	gotoXY(41,12);cout << "- 1. Easy.";
+	gotoXY(41,13);cout << "- 2. Medium.";
+	gotoXY(41,14);cout << "- 3. Hard.";
+	int t;
+	gotoXY(41,15); cout<< "Your choice: ";
+	gotoXY(55,15); cin >> t;
+	if (t == 1){
+		return 1;
+	}else if (t == 2){
+		return 2;
+	}else if ( t == 3){
+		return 3;
+	}else {
+		system("cls");
+		gotoXY(41,12);cout << "Chon lai. ";
+		Sleep(500);
+		MenuStart();
+	}
 }
 int main(){
 	ShowConsoleCursor(false);
