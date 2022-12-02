@@ -4,6 +4,36 @@
 
 using namespace std;
 
+void ShowConsoleCursor(bool);
+void SetWindowSize(SHORT width, SHORT height);
+void SetScreenBufferSize(SHORT width, SHORT height);
+void DisableResizeWindow();
+void DisableCtrButton(bool Close, bool Min, bool Max);
+void ShowScrollbar(BOOL Show);
+int MenuStart();
+void ve_tuong();
+void Name();
+void gameover();
+int endMenu();
+int dieuKien(int x, int y);
+void Move(int z, int k[], int h[], int CheDo);
+void viTriGoc(int x[],int y[]);
+void viTriGoc(int x[],int y[]);
+void veRan(int x[], int y[]);
+int Random(int n);
+void Moi(int ToaDox[], int ToaDoy[], int *n, int *m);
+void them(int ToaDox[], int ToaDoy[]);
+void Diem(int *diem);
+void reset(int &x);
+
+#define TOP 2
+#define LEFT 5
+#define RIGHT 105
+#define BOT 26
+#define MAX 2156
+
+int sl = 3;
+
 void ShowConsoleCursor(bool showFlag)// an con tro chuot
 {
 	HANDLE out =GetStdHandle(STD_OUTPUT_HANDLE);
@@ -412,6 +442,128 @@ void Moi(int ToaDox[], int ToaDoy[], int *n, int *m){
 	cout << "*";
 }
 
+void Move(int z, int k[], int h[], int CheDo) {
+	char khn = 205;
+	char khd = 186;
+	int diem = 0;
+	gotoXY(105,29); cout << "SCORE : " << diem;
+	int n, m;
+	Moi(k, h, &n, &m);
+	int xcu, ycu , xcucheck , ycucheck;
+	int xcu2 = sl, ycu2 = sl ;
+	char a = 002;
+	int Check = 0;
+	int Checkcu = 0;
+	while (true) {
+		int ktrax, ktray;
+		ktrax = k[0]; ktray = h[0];
+		gotoXY(k[sl], h[sl]); cout << " ";
+		if (CheDo == 1){
+			if(dieuKien(ktrax,ktray, k, h) != 5 ) break;
+		}else if(CheDo == 2){
+			if(dieuKien(ktrax,ktray,k,h) == 0) break;
+		}
+		gotoXY(k[0],h[0]);
+		cout << a;
+		if (_kbhit())
+		{
+			char dieukhien = _getch();
+			if (dieukhien == -32 )
+			{
+				dieukhien = _getch();
+				if (dieukhien == 72) // len
+					Check = 1;
+				else if (dieukhien == 80) // xuong
+					Check = 0;
+				else if (dieukhien == 77) // phai
+					Check = 3;
+				else if (dieukhien == 75)
+					Check = 2;
+			}
+			
+		}
+		// Khong Duoc Di Nguoc
+		xcu = k[0]; ycu = h[0];
+		xcucheck = k[1]; ycucheck = h[1];
+		//Check di nguoc
+		if ( Check == 0 and ycucheck == h[0] + 1) Check = 1;
+		else if ( Check == 1 and ycucheck == h[0] - 1) Check = 0;
+		else if ( Check == 2 and xcucheck == k[0] - 1) Check = 3;
+		else if ( Check == 3 and xcucheck == k[0] + 1) Check = 2;
+		if(CheDo == 2){
+			if(k[0] == 6 && Check == 2) k[0] = 104;
+			else if(k[0] == 104 && Check == 3) k[0] = 6;
+			else if(h[0] == 3 && Check == 1) h[0] = 25;
+			else if(h[0] == 25 && Check == 0) h[0] = 3;
+		}
+		//Move
+		if (Check == 0) h[0]++;
+		else if (Check == 1) h[0]--;
+		else if (Check == 2) k[0]--;
+		else if (Check == 3) k[0]++;
+		// Thay Doi Vi Tri cua Than
+		for(int i = 1; i <= sl; i++){
+			xcu2 =k[i]; ycu2 = h[i];
+			k[i] = xcu;h[i] = ycu;
+			xcu = xcu2;ycu = ycu2;
+		}
+		for(int i = 0 ; i <sl ; i++){
+			if (i == 0){
+				gotoXY(k[i], h[i]); cout << a;
+			}else {
+				gotoXY(k[i], h[i]); cout << "o";
+			}
+		}
+		if (k[0] == n && h[0] == m){
+			diem++;
+			them( k , h);
+			Moi(k,h,&n,&m);
+			Diem(&diem);
+		}
+		Sleep(z);
+	}
+	gameover(k, h);
+}
+
+void Play(){
+	int n;
+	int ToaDox[MAX], ToaDoy[MAX];
+	Name();
+	string a;
+	gotoXY(52,14); cout << "Name: "; cin >>a;
+	system("cls");
+	int CheDo = MenuXin();
+	int x;
+	system("cls");
+	x = MenuStart();
+	system("cls");
+	ShowConsoleCursor(false);
+	SetWindowSize(200,100);
+	SetScreenBufferSize(200,100);
+	DisableResizeWindow();
+	DisableCtrButton(1,1,1);
+	ShowScrollbar(0);
+	ve_tuong();
+	gotoXY (1,1); cout << "PLAYER: " << a;
+	int z;
+	if(x == 1) z = 1000;
+	if(x == 2) z = 200;
+	if(x == 3) z = 100;
+	viTriGoc(ToaDox, ToaDoy);
+	veRan(ToaDox, ToaDoy);
+	Move( z, ToaDox, ToaDoy, CheDo);
+	Sleep(2000);
+	int k = endMenu();
+	
+	if (k == 1){
+		system("cls");
+		gotoXY(50,12); cout << "SEE YOU AGAIN!";
+	} else {
+		system("cls");
+		Play();
+	}
+}
+
 
 void reset(int &x )
 {
@@ -419,15 +571,6 @@ void reset(int &x )
 }
 
 int main(){
-	ShowConsoleCursor(false);
-	SetWindowSize(200,100);
-	SetScreenBufferSize(200,100);
-	DisableResizeWindow();
-	DisableCtrButton(1,1,1);
-	ShowScrollbar(0);
-	ve_tuong(); cout <<"\n";
-	MenuXin();
-	viTriGoc(x,y);
-	veRan(x,y);
+	Play();
 	return 0;
 }
