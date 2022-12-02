@@ -158,7 +158,35 @@ void veRan(int x[], int y[]) {
 		}
 	}
 }
+void Diem(int *diem){
+	gotoXY(105,29); cout << "SCORE : " << *diem;
+}
+void them(int ToaDox[], int ToaDoy[]){
+	int x, y;
+	x = ToaDox[sl];
+	y = ToaDoy[sl];
+	sl++;
+	ToaDox[sl-1] = x;
+	ToaDoy[sl-1] = y;
+}
 
+int Random(int n)
+{
+   return rand()%(n+1);
+}
+
+void Moi(int ToaDox[], int ToaDoy[], int *n, int *m){
+	int x = Random(98) + 6;
+	int y = Random(22) + 3;
+	for(int i = 0; i < sl; i++){
+		if(x == ToaDox[i] && y == ToaDoy[i]){
+			Moi(ToaDox,ToaDoy,n,m);
+		}
+	}
+	*n = x; *m = y;
+	gotoXY(x,y);
+	cout << "*";
+}
 int main(){
 	ShowConsoleCursor(false);
 	SetWindowSize(200,100);
