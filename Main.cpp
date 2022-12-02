@@ -166,8 +166,8 @@ int main(){
 	DisableResizeWindow();
 	DisableCtrButton(1,1,1);
 	ShowScrollbar(0);
-	MenuXin();
 	ve_tuong(); cout <<"\n";
+	MenuXin();
 	viTriGoc(x,y);
 	veRan(x,y);
 	return 0;
